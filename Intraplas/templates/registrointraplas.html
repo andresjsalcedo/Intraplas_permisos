@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro</title>
+    {% load static %}
+<style>
+    body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #A6D8D8;
+    font-family: Arial, sans-serif;
+}
+
+.login-container, .register-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+.login-container h2, .register-container h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.login-container form, .register-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"],
+.register-container input[type="text"],
+.register-container input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.login-container button, .register-container button {
+    padding: 10px;
+    background-color: #3C474B;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.login-container button:hover, .register-container button:hover {
+    background-color: #68c5ed;
+}
+
+.register-container p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.register-container p a {
+    color: #008CBA;
+    text-decoration: none;
+}
+
+.register-container p a:hover {
+    text-decoration: underline;
+}
+
+.form-text.text-muted { 
+        display: none; 
+    }
+    
+</style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Crear Cuenta</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Registrarse</button>
+        </form>
+        <p>¿Ya tienes una cuenta? <a href="{% url 'loginintraplas' %}">Inicia sesión</a></p>
+    </div>
+</body>
+</html>

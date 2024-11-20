@@ -1,0 +1,77 @@
+{% extends "adminpanel.html" %}
+{% load static %}
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+
+{% block title %}INTRAPLAS SAS{% endblock %}
+
+{% block content %}
+
+  {% for usuario in usuarios %}
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+        <tbody>
+              <tr>
+                <td class="text-center">{{ usuario.id }}</td>
+                <td class="text-center">{{ usuario.nombre }}</td>
+                <td class="text-center">{{ usuario.apellidos }}</td>
+                <td class="text-center">{{ usuario.area }}</td>
+                <td class="text-center">
+                    <img src="../../../../media/edit-svg-icon-22.jpg" width="20px" class="mb-1 text-center">
+                </td>
+                <td class="text-center">{{ usuario.rol }}</td>
+                <td class="text-center"><a href="" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                  <img src="../../../../media/edit-svg-icon-22.jpg" width="20px" class="mb-1 text-center"></a>
+                  <img src="../../../../media/image_processing20210629-14744-1rjf38b.png" width="20px" class="mb-1">
+                </td>
+              </tr>
+        </tbody>
+
+<!-- Modal info usuario-->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+    <!--ID-->
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label fw-bold">ID</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="{{ usuario.id }}">
+    </div>
+
+    <!--Nombre-->
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label fw-bold">Nombre</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="{{ usuario.nombre }}">
+    </div>
+
+    <!--Apellidos-->
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label fw-bold">Apellido</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="{{ usuario.apellidos }}">
+    </div>
+
+    <!--Area-->
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label fw-bold">Area</label>
+      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="{{ usuario.area }}">
+    </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  {% endfor %}
+{% endblock %}
